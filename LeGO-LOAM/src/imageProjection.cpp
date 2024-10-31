@@ -43,7 +43,7 @@ ImageProjection::ImageProjection(const std::string &name, Channel<ProjectionOut>
     : Node(name),  _output_channel(output_channel)
 {
   _sub_laser_cloud = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-      "/lidar_points", 1, std::bind(&ImageProjection::cloudHandler, this, std::placeholders::_1));
+      "/rslidar_points", 1, std::bind(&ImageProjection::cloudHandler, this, std::placeholders::_1));
 
   _pub_full_cloud = this->create_publisher<sensor_msgs::msg::PointCloud2>("/full_cloud_projected", 1);
   _pub_full_info_cloud = this->create_publisher<sensor_msgs::msg::PointCloud2>("/full_cloud_info", 1);
